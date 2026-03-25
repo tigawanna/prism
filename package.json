@@ -13,12 +13,12 @@
     "lint": "eslint ./packages/**/src/*.ts",
     "lint.fix": "yarn lint --fix",
     "clean": "rm -rf ./packages/**/dist ./packages/**/*.tsbuildinfo",
-    "build": "npm run clean && ttsc --build --verbose ./packages/tsconfig.build.json",
+    "build": "npm run clean && tsc --build --verbose ./packages/tsconfig.build.json",
     "posttest": "yarn lint",
     "test": "node --expose-gc ./node_modules/.bin/jest",
     "release": "lerna version",
     "prebuild.binary": "yarn build",
-    "build.binary": "npx pkg --output ./cli-binaries/prism-cli --options max_old_space_size=4096 ./packages/cli/",
+    "build.binary": "npx @yao-pkg/pkg --output ./cli-binaries/prism-cli --options max_old_space_size=4096 ./packages/cli/",
     "test.harness": "jest -c ./jest.harness.config.js"
   },
   "resolutions": {
@@ -32,7 +32,7 @@
     "@types/jest": "^29.5.4",
     "@types/json-schema": "^7.0.9",
     "@types/lodash": "^4.14.175",
-    "@types/node": "^13.1.1",
+    "@types/node": "^24.12.0",
     "@types/node-fetch": "^2.6.13",
     "@types/pino": "6.3.12",
     "@types/postman-collection": "^3.5.7",
@@ -44,8 +44,8 @@
     "@types/uri-template-lite": "^19.12.1",
     "@types/urijs": "^1.19.17",
     "@types/whatwg-mimetype": "^3.0.0",
-    "@typescript-eslint/eslint-plugin": "^2.34.0",
-    "@typescript-eslint/parser": "^4.33.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
     "abstract-logging": "^2.0.1",
     "diff-js-xml": "^1.0.5",
     "eslint": "^7.32.0",
@@ -72,7 +72,7 @@
     "tsconfig-paths": "^4.1.0",
     "ttypescript": "^1.5.15",
     "type-is": "^1.6.18",
-    "typescript": "4.9.3"
+    "typescript": "5.4.5"
   },
   "lint-staged": {
     "**/packages/**/*.ts": [
