@@ -1,7 +1,7 @@
 name: Build
 on:
   push:
-    branches: [main]
+    branches: [master]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,7 +24,7 @@ jobs:
     - name: Run build
       run: yarn build
   harness-macos:
-    if: (github.ref == 'refs/tags/"v[0-9].[0-9]+.[0-9]+"') && (github.ref != 'refs/heads/master')
+    if: startsWith(github.ref, 'refs/tags/v') && github.ref != 'refs/heads/master'
     runs-on: macos-latest
     env:
       executor: macos
@@ -34,8 +34,10 @@ jobs:
       with:
         xcode-version: 13.4.1
     - uses: actions/checkout@v4.1.0
-    - run: nvm install 24.14.0 && nvm alias default 24.14.0
-      if: env.install_manually
+    - uses: actions/setup-node@v6
+      with:
+        node-version-file: .nvmrc
+        cache: 'yarn'
     - run: pip3 install pipenv gunicorn
       if: env.install_manually
     - run: sudo bash -c 'echo "0.0.0.0 httpbin.org" >> /etc/hosts'
@@ -61,8 +63,6 @@ jobs:
       install_manually: true
     steps:
     - uses: actions/checkout@v4.1.0
-    - run: nvm install 24.14.0 && nvm alias default 24.14.0
-      if: env.install_manually
     - run: pip3 install pipenv gunicorn
       if: env.install_manually
     - run: sudo bash -c 'echo "0.0.0.0 httpbin.org" >> /etc/hosts'
@@ -80,7 +80,7 @@ jobs:
     - name: Run Harness
       run: yarn test.harness
   publish:
-    if: (github.ref == 'refs/tags/"v[0-9].[0-9]+.[0-9]+"') && (github.ref != 'refs/heads/master')
+    if: startsWith(github.ref, 'refs/tags/v') && github.ref != 'refs/heads/master'
     runs-on: ubuntu-latest
     container:
       image: node:24.14
@@ -100,15 +100,12 @@ jobs:
     - name: Publish
       run: yarn lerna publish from-git --create-release=github --yes
     - name: Create CLI binaries
-      run: npx pkg --out-path ./cli-binaries ./packages/cli/
+      run: npx @yao-pkg/pkg --out-path ./cli-binaries --options max_old_space_size=4096 ./packages/cli/
     - uses: actions/upload-artifact@v4.1.0
       with:
         path: "./cli-binaries"
-    - uses: actions/upload-artifact@v4.1.0
-      with:
-        path: ".//cli-binaries"
   upload_artifacts:
-    if: (github.ref == 'refs/tags/"v[0-9].[0-9]+.[0-9]+"') && (github.ref != 'refs/heads/master')
+    if: startsWith(github.ref, 'refs/tags/v') && github.ref != 'refs/heads/master'
     runs-on: ubuntu-latest
     container:
       image: golang:1.23
