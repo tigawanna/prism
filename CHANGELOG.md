@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.15.8](https://github.com/stoplightio/prism/compare/v5.15.7...v5.15.8) (2026-04-17)
+
+### Bug Fixes
+
+- **ci:** fix release binaries & sync lockfile steps ([#2779](https://github.com/stoplightio/prism/issues/2779)) ([9caed88](https://github.com/stoplightio/prism/commit/9caed880491a5987987cb25b511dd515ebfd0436))
+
 ## [5.15.7](https://github.com/stoplightio/prism/compare/v5.15.6...v5.15.7) (2026-04-17)
 
 ### Bug Fixes

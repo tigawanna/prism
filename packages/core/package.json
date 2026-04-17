@@ -1,6 +1,6 @@
 {
   "name": "@stoplight/prism-core",
-  "version": "5.15.7",
+  "version": "5.15.8",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "author": "Stoplight <support@stoplight.io>",
