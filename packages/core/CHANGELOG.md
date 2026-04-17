@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.15.9](https://github.com/stoplightio/prism/compare/v5.15.8...v5.15.9) (2026-04-17)
+
+**Note:** Version bump only for package @stoplight/prism-core
+
 ## [5.15.8](https://github.com/stoplightio/prism/compare/v5.15.7...v5.15.8) (2026-04-17)
 
 **Note:** Version bump only for package @stoplight/prism-core
