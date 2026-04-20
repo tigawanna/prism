@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.15.10](https://github.com/stoplightio/prism/compare/v5.15.9...v5.15.10) (2026-04-20)
+
+### Bug Fixes
+
+- **ci:** run yarn build before publishing npm packages ([#2783](https://github.com/stoplightio/prism/issues/2783)) ([3662352](https://github.com/stoplightio/prism/commit/36623524aea29ac1edad2de3cdba753171fdda5e))
+
 ## [5.15.9](https://github.com/stoplightio/prism/compare/v5.15.8...v5.15.9) (2026-04-17)
 
 ### Bug Fixes
